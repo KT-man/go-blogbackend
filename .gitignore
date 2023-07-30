@@ -27,6 +27,6 @@ go.work
 # Env files
 *.env
 .env
-cmd/.env
+
 
 # End of https://www.toptal.com/developers/gitignore/api/go
