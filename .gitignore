@@ -28,5 +28,10 @@ go.work
 *.env
 .env
 
+# Toml files 
+*.toml
+
+# Log files
+*.log
 
 # End of https://www.toptal.com/developers/gitignore/api/go
