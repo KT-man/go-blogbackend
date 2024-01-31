@@ -11,3 +11,8 @@ type User struct {
 	CreatedAt string `json:"createdAt"`
 	UpdatedAt string `json:"updatedAt"`
 }
+
+type NewUser struct {
+	Username string
+	Password string `json:"password" validate:"required,min=6"`
+}
