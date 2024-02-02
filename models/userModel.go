@@ -8,8 +8,8 @@ type User struct {
 	Password string `json:"password" validate:"required,min=6"`
 	Token string `json:"token"`
 	RefreshToken string `json:"refreshToken"`
-	CreatedAt string `json:"createdAt"`
-	UpdatedAt string `json:"updatedAt"`
+	CreatedAt int64 `json:"createdAt"`
+	UpdatedAt int64 `json:"updatedAt"`
 }
 
 type NewUser struct {

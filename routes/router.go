@@ -11,5 +11,4 @@ import (
 func UserRoutes(router *gin.Engine) {
 	// router.POST("/users/getAllUsers", controllers.PostGetAllUsers())
 	router.POST("/users/createNewUser", controllers.PostCreateNewUser())
-
 }

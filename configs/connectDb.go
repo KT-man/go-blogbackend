@@ -3,6 +3,7 @@ package configs
 import (
 	"context"
 	"fmt"
+	"time"
 
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -19,12 +20,16 @@ import (
 	  panic(err)
 	}
 
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+
 	defer func() {
-	  if err = client.Disconnect(context.TODO()); err != nil {
-		panic(err)
-	  }
+    	if err = client.Disconnect(ctx); err != nil {
+        panic(err)
+    	}
 	}()
-  
+
+	defer cancel()
+
 	// Send a ping to confirm a successful connection
 	if err := client.Database("admin").RunCommand(context.TODO(), bson.D{{Key:"ping", Value:1}}).Err(); err != nil {
 	  panic(err)
