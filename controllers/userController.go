@@ -3,7 +3,6 @@ package controllers
 import (
 	"fmt"
 	responses "go-backend/api"
-	"go-backend/configs"
 	"go-backend/models"
 	"net/http"
 	"time"
@@ -13,7 +12,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-var usersCollection = configs.GetUsersCollection(configs.ConnectDB(), "users")
+// var usersCollection = configs.GetUsersCollection(configs.ConnectDB(), "users")
 var validate = validator.New()
 
 func PostCreateNewUser () gin.HandlerFunc {

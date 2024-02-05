@@ -1,41 +1,31 @@
-package configs
+// package configs
 
-import (
-	"context"
-	"fmt"
-	"time"
+// import (
+// 	"context"
+// 	"fmt"
 
-	"go.mongodb.org/mongo-driver/bson"
-	"go.mongodb.org/mongo-driver/mongo"
-	"go.mongodb.org/mongo-driver/mongo/options"
-)
+// 	"go.mongodb.org/mongo-driver/bson"
+// 	"go.mongodb.org/mongo-driver/mongo"
+// 	"go.mongodb.org/mongo-driver/mongo/options"
+// )
   
-  func ConnectDB() *mongo.Client {
-	// Use the SetServerAPIOptions() method to set the Stable API version to 1
-	serverAPI := options.ServerAPI(options.ServerAPIVersion1)
-	opts := options.Client().ApplyURI(MongoEnvURI()).SetServerAPIOptions(serverAPI)
-	// Create a new client and connect to the server
-	client, err := mongo.Connect(context.TODO(), opts)
-	if err != nil {
-	  panic(err)
-	}
+//   func ConnectDB() *mongo.Client {
+// 	// Use the SetServerAPIOptions() method to set the Stable API version to 1
+// 	serverAPI := options.ServerAPI(options.ServerAPIVersion1)
+// 	opts := options.Client().ApplyURI(MongoEnvURI()).SetServerAPIOptions(serverAPI)
+// 	// Create a new client and connect to the server
+// 	client, err := mongo.Connect(context.TODO(), opts)
+// 	if err != nil {
+// 	  panic(err)
+// 	}
 
-	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 
-	defer func() {
-    	if err = client.Disconnect(ctx); err != nil {
-        panic(err)
-    	}
-	}()
+// 	// Send a ping to confirm a successful connection
+// 	if err := client.Database("admin").RunCommand(context.TODO(), bson.D{{Key:"ping", Value:1}}).Err(); err != nil {
+// 	  panic(err)
+// 	}
+// 	fmt.Println("Pinged your deployment. You successfully connected to MongoDB!")
 
-	defer cancel()
-
-	// Send a ping to confirm a successful connection
-	if err := client.Database("admin").RunCommand(context.TODO(), bson.D{{Key:"ping", Value:1}}).Err(); err != nil {
-	  panic(err)
-	}
-	fmt.Println("Pinged your deployment. You successfully connected to MongoDB!")
-
-	return client
-  }
+// 	return client
+//   }
   
